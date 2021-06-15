@@ -7,5 +7,5 @@
   <Image width="16" height="16" type="image/x-icon">https://packemon.dev/img/favicon.svg</Image>
   <Url type="text/html" method="get" template="https://packemon.dev/search?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://packemon.dev/opensearch.xml" />
-  <moz:SearchForm>https://packemon.dev</moz:SearchForm>
+  <moz:SearchForm>https://packemon.dev/</moz:SearchForm>
 </OpenSearchDescription>
