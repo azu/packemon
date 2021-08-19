@@ -1,6 +1,7 @@
 import { ModuleFormat, OutputOptions, RollupOptions } from 'rollup';
 import externals from 'rollup-plugin-node-externals';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
+import smartAsset from 'rollup-plugin-smart-asset';
 import visualizer from 'rollup-plugin-visualizer';
 import { getBabelInputPlugin, getBabelOutputPlugin } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
@@ -94,9 +95,10 @@ export function getRollupOutputConfig(
 ): OutputOptions {
 	const { platform, support } = artifact;
 	const { ext, folder } = artifact.getBuildOutput(format);
+	const dir = artifact.package.path.append(folder).path();
 
 	const output: OutputOptions = {
-		dir: artifact.package.path.append(folder).path(),
+		dir,
 		format: getRollupModuleFormat(format),
 		originalFormat: format,
 		interop: 'auto',
@@ -120,6 +122,15 @@ export function getRollupOutputConfig(
 				sourceMaps: false,
 			}),
 			addBinShebang(),
+			smartAsset({
+				assetsPath: '../assets',
+				extensions: ['.svg', '.gif', '.png', '.jpg'],
+				keepImport: true,
+				nameFormat: '[name]-[hash][extname]',
+				outputDir: dir,
+				url: 'copy',
+				useHash: false,
+			}),
 		],
 		// Always include source maps
 		sourcemap: true,
