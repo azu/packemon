@@ -122,15 +122,6 @@ export function getRollupOutputConfig(
 				sourceMaps: false,
 			}),
 			addBinShebang(),
-			smartAsset({
-				assetsPath: '../assets',
-				extensions: ['.svg', '.gif', '.png', '.jpg'],
-				keepImport: true,
-				nameFormat: '[name]-[hash][extname]',
-				outputDir: dir,
-				url: 'copy',
-				useHash: false,
-			}),
 		],
 		// Always include source maps
 		sourcemap: true,
@@ -185,6 +176,15 @@ export function getRollupConfig(artifact: CodeArtifact, features: FeatureFlags):
 				filename: artifact.package.path.path(),
 				// Extract maps from the original source
 				sourceMaps: true,
+			}),
+			smartAsset({
+				// assetsPath: '../assets',
+				// extensions: ['.svg', '.gif', '.png', '.jpg'],
+				keepImport: true,
+				// nameFormat: '[name]-[hash][extname]',
+				// outputDir: dir,
+				// url: 'copy',
+				// useHash: false,
 			}),
 		],
 		// Treeshake for smaller builds
