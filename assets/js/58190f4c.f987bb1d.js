@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[9020],{9313:function(e){e.exports=JSON.parse('{"id":295,"name":"WatchOptions","nextId":529,"permalink":"/api/packemon/interface/WatchOptions","previousId":585}')}}]);
